@@ -1,0 +1,18 @@
+jquery.mb.imageNavigator
+
+2.0 Major issue released:
+  Solved the containment issue; now the image never goes out from the screen!
+  It needs the jQuery UI 1.7.1
+
+1.8.0 Major issue released:
+  Now yo can define paramiters without writing custom attributes on the tag, and the component is W3C compliant!:
+  >> before
+  <div imageUrl="iStock_2.jpg" navPosition="TR" navWidth="100">
+  >> Now
+  <div style="display:none;">
+  You can still use both sintax, but if you want to be w3c compliant than you nee the second one and you have to include jquery.metadata.js in your page.
+  you can add an additional content layer that overlay image and moves with it:
+  Ex:
+  <div style='color:white; font-size:100px; top:0; width:1000px; height:1000px; text-align:left;'>
+  this is an additional content div that is over the image and it moves with it!
+  </div>

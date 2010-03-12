@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<!--
+  ~ jquery.mb.components
+  ~ Copyright (c) 2001-2010. Matteo Bicocchi (Pupunzi); Open lab srl, Firenze - Italy
+  ~ email: info@pupunzi.com
+  ~ site: http://pupunzi.com
+  ~
+  ~ Licences: MIT, GPL
+  ~ http://www.opensource.org/licenses/mit-license.php
+  ~ http://www.gnu.org/licenses/gpl.html
+  -->
+
+<html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>imageNavigator</title>
+	<link href="mbImgNav.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js
+"></script>
+	<script type="text/javascript" src="inc/jquery.metadata.js"></script>
+	<script type="text/javascript" src="inc/ui.core.min.js"></script>
+	<script type="text/javascript" src="inc/ui.draggable.min.js"></script>
+	<script type="text/javascript" src="inc/mbImgNav.js"></script>
+	<style type="text/css">
+		
+		body {
+			background-color:#f3f3f3;
+			margin:20px;
+		}
+		body, span, div {
+			font-family:sans-serif;
+			font-size:14px;
+		}
+		.imagesIndex{
+			margin-left:30px
+		}
+		.imagesIndex span.title{
+			display:inline-block;
+			padding:6px;
+			padding-bottom:3px;
+			background-color:white;
+			color:black;
+			cursor:pointer;
+			margin-right:3px;
+			-moz-border-radius:8px 8px 0px 0px;
+			-webkit-border-top-right-radius:8px;
+			-webkit-border-top-left-radius:8px; 			
+		}
+		.imagesIndex span.title.selected{
+			background-color:gray;
+			color:white;
+			cursor:pointer;
+		}
+		.imageContainer{
+			border:20px solid gray;
+			background-color:black;
+			-moz-border-radius:20px 20px 0px 0px;
+			-webkit-border-top-right-radius:20px;
+			-webkit-border-top-left-radius:20px;
+		}
+		.applContainer{
+			background-color:black;
+		}
+		.descriptionBox{
+			border:20px solid gray;
+			border-top:none;
+			width:100%;
+			-moz-border-radius:0px 0px 20px 20px;
+			-webkit-border-bottom-right-radius:20px;
+			-webkit-border-bottom-left-radius:20px; 			
+			color:white;
+			background-color:gray;
+		}
+		.nav{
+			display:block;
+			border:2px solid gray;
+			background-color:gray;
+		}
+
+	</style>
+
+	<script type="text/javascript">
+		$(function(){
+			$("#navArea").imageNavigator(
+			{
+				areaWidth: 700,
+				areaHeight:500,
+				draggerStyle:"1px dotted red",
+				navOpacity:.8
+			})
+		})
+	</script>
+
+</head>
+<body >
+<center>
+<div id="navArea">
+
+	<div style="display:none;" class="imagesContainer {imageUrl:'DSC00844.JPG', navPosition:'BR', navWidth: 100}">
+		<span class="title">zuccheriera</span>
+		<div class="description"><STRONG>description1</STRONG></div>
+		<div class="additionalContent" style='color:white; font-size:100px; top:0; width:1000px; height:1000px; text-align:left;'>
+			this is an additional content div that is over the image and it moves with it!
+		</div>
+	</div>
+	
+	<div style="display:none;" class="imagesContainer {imageUrl:'iStock_2.jpg', navPosition:'TR', navWidth: 100, NavCoordinates:'1700,1700' }">
+		<span class="title">donna</span>
+		<div class="description"><STRONG>description</STRONG></div>
+	</div>
+
+	<div style="display:none;" class="imagesContainer {imageUrl:'DSC00872.JPG', navPosition:'TL', navWidth: 100, NavCoordinates:'52,32' }">
+		<span class="title">Pietro</span>
+		<div class="description"><STRONG>description2</STRONG></div>
+	</div>
+	<div style="display:none;" class="imagesContainer {imageUrl:'ischia.jpg', navPosition:'TR', navWidth: 200, NavCoordinates:'52,32' }">
+		<span class="title">Ischia</span>
+		<div class="description"><STRONG>description3</STRONG></div>
+	</div>
+
+</div>
+</center>
+<div style="padding:6px;position:absolute;z-index:1000; bottom:10px; right:10px; -webkit-border-radius:7px;-moz-border-radius:7px;border:2px solid white; background:#000;text-align:center;color:white;">
+  Please support my work<br>with a free donation!<br><br>
+  <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=V6ZS8JPMZC446&amp;lc=GB&amp;item_name=mb%2eideas&amp;item_number=MBIDEAS&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG_global%2egif%3aNonHosted">
+    <img alt="PayPal" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0">
+  </a>
+</div>
+
+</body></html>
+
