@@ -1,4 +1,4 @@
-# mb.imageNavigator 2.0
+# mb.imgNavigator 2.0
 
 __An open source jQuery component to easily create a navigator tool for your extralarge images.__
 
