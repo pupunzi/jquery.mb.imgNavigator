@@ -11,7 +11,7 @@
 
 /*
  * Name:jquery.mb.imageNavigator
- * Version: 2.0
+ * Version: 2.1
 */
 
 
@@ -127,12 +127,10 @@
             $(this).removeClass("selected");
         });
         navW=navWidth;
-        var imageObj = new Image();
-        imageObj.src=null;
+
         u=u+"?rdm="+Math.random();
-        imageObj.src = u;
-        imageObj.onload =function(){buildnav(u);};
-        imageObj.onerror = imageFailed;
+
+        $("<img/>").attr({"src":u}).load(function(){buildnav(u);}).attr({"src":u}).error(imageFailed);
         $("#loader").fadeIn(500);
       }
 
