@@ -2,7 +2,7 @@
 
 __An open source jQuery component to easily create a navigator tool for your extralarge images.__
 
-![mb.imgNavigator](http://pupunzi.com/gitHub/mb.imgNavigator.jpg)
+![mb.imgNavigator](http://dl.dropbox.com/u/1976976/gitHub/mb.imgNavigator.jpg)
 
 
 ## [go to the demo](http://pupunzi.com/#mb.components/mb.imageNavigator/imageNavigator.html)
