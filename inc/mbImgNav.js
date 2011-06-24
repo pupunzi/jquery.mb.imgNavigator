@@ -173,9 +173,9 @@
         image= $(draggableElement).find(".navImage");
 
         //additionalContent
-        $(draggableElement).append("<div class='additionalContent'></div>");
-        additionalContent=$(draggableElement).find(".additionalContent");
-        $(additionalContent).css({position:"absolute", top:"0"});
+        $(draggableElement).append("<div id='additionalContent'></div>");
+        additionalContent=$(draggableElement).find("#additionalContent");
+        $(additionalContent).css({position:"absolute", top:"0",width:"100%",height:"100%"});
         $(draggableElement).css({
           position:"absolute"
         });
