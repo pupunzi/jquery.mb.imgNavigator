@@ -21,7 +21,6 @@
   jQuery.fn.imageNavigator = function (options){
     return this.each (function ()
     {
-
       this.options={
         areaWidth: 500,
         areaHeight:500,
@@ -199,7 +198,6 @@
             if (t>0) t=0;
             if (l>0) l=0;
           }
-          //console.log(!$(images[actualIdx]).attr("NavCoordinates"), t, l)
           $(draggableElement).animate({
             top:t,
             left:l
