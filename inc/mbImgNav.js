@@ -46,9 +46,10 @@
       var images= $(imgNav).find(".imagesContainer");
       $(imgNav).empty();
 
+
       if ($.metadata){
         $.metadata.setType("class");
-        $(images).each(function(){
+        images.each(function(){
           if ($(this).metadata().imageUrl) $(this).attr("imageUrl",$(this).metadata().imageUrl);
           if ($(this).metadata().navPosition) $(this).attr("navPosition",$(this).metadata().navPosition);
           if ($(this).metadata().navWidth) $(this).attr("navWidth",$(this).metadata().navWidth);
@@ -58,7 +59,7 @@
 
       var imageURL=$(images[0]).attr("imageUrl");
       var navPos=$(images[0]).attr("navPosition");
-      var navWidth= $(images[0]).attr("navWidth")?$(this).attr("navWidth"):imgNav.options.defaultnavWidth;//100;
+      var navWidth= $(images).eq(0).attr("navWidth")?$(images).eq(0).attr("navWidth"):imgNav.options.defaultnavWidth;//100;
 
       var titles=$(images).find(".title");
       var descriptions=$(images).find(".description");
