@@ -18,6 +18,8 @@
 
 
 (function($){
+
+	document.imageNavigator={};
   jQuery.fn.imageNavigator = function (options){
     return this.each (function ()
     {
@@ -144,14 +146,11 @@
         $("#loader").fadeOut(500, function(){canClick=true;});
         $(titles).bind("click",function(){return true;});
         $(imageContainer).click(function(){
-          if($.browser.msie) $(nav).show();
-          else
-            $(nav).show();
+            nav.show();
         });
         $(imageContainer).mouseleave(function(){
-          if($.browser.msie) $(nav).hide();
-          else
-            $(nav).hide();
+						if(document.imageNavigator.hideNav)
+            	nav.hide();
         });
 
         //applContainer
@@ -190,8 +189,8 @@
 
           var t,l;
           if (!$(images[actualIdx]).attr("NavCoordinates")){
-            t=-(imageH/2-($(nav).height()*3));
-            l=-(imageW/2-($(nav).width()*3));
+            t=-(imageH/2-(nav.height()*3));
+            l=-(imageW/2-(nav.width()*3));
           }else{
             t=-(navCoordinateY-($(imageContainer).height()/2));
             l=-(navCoordinateX-($(imageContainer).width()/2));
@@ -207,13 +206,13 @@
         $(draggableElement).draggable({
           containment:[$(imageContainer).offset().left-imageW+$(imageContainer).outerWidth(),$(imageContainer).offset().top-imageH+$(imageContainer).outerHeight(),$(imageContainer).offset().left,$(imageContainer).offset().top],
           start:function(){
-            $(nav).hide();
+            nav.hide();
             $(draggableElement).css({cursor:"move"});
           },
           stop:function(e,ui){
             refreshThumbPos(ui.position.left,ui.position.top);
             $(draggableElement).css({cursor:"default"});
-            $(nav).show();
+            nav.show();
           }
         });
         $(draggableElement).bind("dblclick", function(){fitonScreen();});
@@ -221,38 +220,44 @@
         //nav SCREEN
         $(applContainer).append("<div class='nav'></div>");
         nav = $(imgNav).find(".nav");
-        $(nav).css({
+        nav.css({
           position:"absolute",
           opacity: imgNav.options.navOpacity
         });
 
         //ZONE SELECTOR
-        $(nav).append("<div id='navLocator'></div>");
+        nav.append("<div id='navLocator'></div>");
         navLocator= $(imgNav).find("#navLocator");
-        $(navLocator).css({
+        navLocator.css({
           zIndex: 10000,
           position: "absolute",
           border : imgNav.options.draggerStyle,
           backgroundColor: $.browser.msie?"white":"transparent",
           opacity: $.browser.msie?.5:1
         });
-        $(nav).hide(1);
-        $(navLocator).bind("dblclick",function(){fitonScreen();});
-        $(navLocator).draggable({
+        nav.hide(1);
+        navLocator.bind("dblclick",function(){fitonScreen();});
+        navLocator.draggable({
           containment: 'parent',
           start:function(){
-            $(navLocator).css({cursor:"move"});
+						document.imageNavigator.hideNav=false;
+            navLocator.css({cursor:"move"});
           },
           drag:function(e,ui){
             refreshImagePos(ui.position.left,ui.position.top);
+
           },
-          stop:function(){
-            $(navLocator).css({cursor:"default"});
+          stop:function(e){
+            navLocator.css({cursor:"default"});
+						document.imageNavigator.hideNav=true;
+						if(e.target!=navLocator.get(0)){
+							nav.hide();
+						}
           }
         });
 
         //THUMB
-        $(nav).append("<image class='navigationThumb'>");
+        nav.append("<image class='navigationThumb'>");
         navigationThumb= $(imgNav).find(".navigationThumb");
         $(navigationThumb).attr("src",u);
         $(navigationThumb).bind("dblclick",function(){fitonScreen();});
@@ -325,11 +330,6 @@
         $(navigationThumb).height(parseFloat(navH));
         navigationThumbW=$(navigationThumb).width();
         navigationThumbH=$(navigationThumb).height();
-        //			$(nav).css({
-        //				overflow:"hidden",
-        //				width:navigationThumbW,
-        //				height: navigationThumbH+10
-        //			})
       }
 
       function setnavLocatorDim(){
@@ -340,15 +340,15 @@
       function setnavPos(){
         switch(navPos){
           case "TL":
-            $(nav).css("left",0);
-            $(nav).css("top",0);
+            nav.css("left",0);
+            nav.css("top",0);
             break;
           case "TR":
-            $(nav).css("top",0);
-            $(nav).css("left",(imageContainerW-navigationThumbW));
+            nav.css("top",0);
+            nav.css("left",(imageContainerW-navigationThumbW));
             break;
           case "BL":
-            $(nav).css("top",(imageContainerH-navigationThumbH));
+            nav.css("top",(imageContainerH-navigationThumbH));
             break;
           case "BR":
             $(nav).css("left",(imageContainerW-navigationThumbW));
@@ -378,9 +378,9 @@
         if(!image) return;
         $(image).width("");
         $(image).height("");
-        if($.browser.msie) $(nav).show();
+        if($.browser.msie) nav.show();
         else
-          $(nav).fadeIn(500);
+          nav.fadeIn(500);
         imageContainer.oldW=$(imageContainer).css("width");
         imageContainer.oldH=$(imageContainer).css("height");
         imageContainer.style.width= $(window).outerWidth();
