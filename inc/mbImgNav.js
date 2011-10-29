@@ -93,7 +93,7 @@
           if (!canClick) return;
           actualIdx=i;
           canClick=false;
-          imageURL=$(images[i]).attr("imageUrl");
+          imageURL=$(images[i]).attr("imageUrl"); 
           navPos=$(images[i]).attr("navPosition");
           navWidth= $(images[i]).attr("navWidth")?$(images[i]).attr("navWidth"):imgNav.options.defaultnavWidth;//100;
           if ($(images[i]).attr("NavCoordinates")){
